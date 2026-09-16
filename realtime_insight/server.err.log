@@ -1,0 +1,50 @@
+INFO:     Started server process [10988]
+INFO:     Waiting for application startup.
+2026-09-16 13:18:32,800 | INFO    | realtime_insight.main | Inisialisasi database ...
+2026-09-16 13:18:32,810 | INFO    | realtime_insight.main | Config aktif: {'data_source': 'coingecko', 'update_interval_s': 600, 'significant_pct': 5.0, 'window_hours': 1, 'llm_provider': 'mock', 'database': 'sqlite:///./insight.db'}
+2026-09-16 13:18:33,247 | INFO    | apscheduler.scheduler | Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-09-16 13:18:33,253 | INFO    | apscheduler.scheduler | Added job "Poll & Analisis Data" to job store "default"
+2026-09-16 13:18:33,254 | INFO    | apscheduler.scheduler | Scheduler started
+2026-09-16 13:18:33,256 | INFO    | realtime_insight.scheduler | Scheduler aktif — job tiap 600 detik.
+2026-09-16 13:18:33,259 | INFO    | realtime_insight.fetcher | Mengambil data dari sumber coingecko ...
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-09-16 13:18:35,374 | INFO    | httpx | HTTP Request: GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true "HTTP/1.1 200 OK"
+2026-09-16 13:18:35,381 | INFO    | realtime_insight.fetcher | Berhasil mengambil 3 titik data.
+2026-09-16 13:18:35,462 | INFO    | realtime_insight.pipeline | Masuk 3 titik (prune 0).
+2026-09-16 13:18:35,596 | INFO    | realtime_insight.pipeline | Tidak ada perubahan signifikan — LLM dilewati.
+2026-09-16 13:18:35,605 | INFO    | realtime_insight.pipeline | Siklus selesai: 3 metrik, 2 insight, kesimpulan=tidak
+2026-09-16 13:28:33,255 | INFO    | apscheduler.executors.default | Running job "Poll & Analisis Data (trigger: interval[0:10:00], next run at: 2026-09-16 13:28:33 +07)" (scheduled at 2026-09-16 13:28:33.247003+07:00)
+2026-09-16 13:28:33,257 | INFO    | realtime_insight.scheduler | == Job terjadwal dimulai ==
+2026-09-16 13:28:33,260 | INFO    | realtime_insight.fetcher | Mengambil data dari sumber coingecko ...
+2026-09-16 13:28:34,972 | INFO    | httpx | HTTP Request: GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true "HTTP/1.1 200 OK"
+2026-09-16 13:28:34,974 | INFO    | realtime_insight.fetcher | Berhasil mengambil 3 titik data.
+2026-09-16 13:28:34,996 | INFO    | realtime_insight.pipeline | Masuk 3 titik (prune 0).
+2026-09-16 13:28:35,039 | INFO    | realtime_insight.pipeline | Tidak ada perubahan signifikan — LLM dilewati.
+2026-09-16 13:28:35,044 | INFO    | realtime_insight.pipeline | Siklus selesai: 3 metrik, 2 insight, kesimpulan=tidak
+2026-09-16 13:28:35,083 | INFO    | apscheduler.executors.default | Job "Poll & Analisis Data (trigger: interval[0:10:00], next run at: 2026-09-16 13:38:33 +07)" executed successfully
+INFO:     127.0.0.1:58280 - "WebSocket /api/ws/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58287 - "WebSocket /api/ws/live" [accepted]
+INFO:     connection open
+2026-09-16 13:37:34,816 | INFO    | realtime_insight.fetcher | Mengambil data dari sumber coingecko ...
+2026-09-16 13:37:36,291 | INFO    | httpx | HTTP Request: GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true "HTTP/1.1 200 OK"
+2026-09-16 13:37:36,293 | INFO    | realtime_insight.fetcher | Berhasil mengambil 3 titik data.
+2026-09-16 13:37:36,311 | INFO    | realtime_insight.pipeline | Masuk 3 titik (prune 0).
+2026-09-16 13:37:36,349 | INFO    | realtime_insight.pipeline | Tidak ada perubahan signifikan — LLM dilewati.
+2026-09-16 13:37:36,359 | INFO    | realtime_insight.pipeline | Siklus selesai: 3 metrik, 2 insight, kesimpulan=tidak
+INFO:     127.0.0.1:58303 - "WebSocket /api/ws/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58306 - "WebSocket /api/ws/live" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58307 - "WebSocket /api/ws/live" [accepted]
+INFO:     connection open
+2026-09-16 13:38:33,254 | INFO    | apscheduler.executors.default | Running job "Poll & Analisis Data (trigger: interval[0:10:00], next run at: 2026-09-16 13:48:33 +07)" (scheduled at 2026-09-16 13:38:33.247003+07:00)
+2026-09-16 13:38:33,255 | INFO    | realtime_insight.scheduler | == Job terjadwal dimulai ==
+2026-09-16 13:38:33,258 | INFO    | realtime_insight.fetcher | Mengambil data dari sumber coingecko ...
+2026-09-16 13:38:34,517 | INFO    | httpx | HTTP Request: GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true "HTTP/1.1 200 OK"
+2026-09-16 13:38:34,521 | INFO    | realtime_insight.fetcher | Berhasil mengambil 3 titik data.
+2026-09-16 13:38:34,544 | INFO    | realtime_insight.pipeline | Masuk 3 titik (prune 0).
+2026-09-16 13:38:34,584 | INFO    | realtime_insight.pipeline | Tidak ada perubahan signifikan — LLM dilewati.
+2026-09-16 13:38:34,589 | INFO    | realtime_insight.pipeline | Siklus selesai: 3 metrik, 2 insight, kesimpulan=tidak
+2026-09-16 13:38:34,809 | INFO    | apscheduler.executors.default | Job "Poll & Analisis Data (trigger: interval[0:10:00], next run at: 2026-09-16 13:48:33 +07)" executed successfully

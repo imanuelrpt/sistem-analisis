@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realtime Insight — Dashboard Analisis Data</title>
+  <link rel="stylesheet" href="/static/style.css?v=3" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◉</span>
+      <div>
+        <h1>Realtime Insight</h1>
+        <p class="subtitle">Analisis data real-time + kesimpulan otomatis</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="ws-status" id="wsStatus">
+        <span class="dot"></span> Menghubungkan...
+      </div>
+      <div class="cycle" id="cycleInfo">Siklus #0</div>
+      <div class="clock" id="clock">--:--:--</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Kartu nilai terkini -->
+    <section class="cards" id="metricCards"></section>
+
+    <!-- Dua kolom kiri-kanan -->
+    <div class="cols-2">
+      <!-- Kolom kiri: grafik + insight -->
+      <div class="col">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Grafik Tren</h2>
+            <div class="legend-hint">data + moving average 5-titik</div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="trendChart"></canvas>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Insight Terdeteksi</h2>
+            <button class="btn" id="runNowBtn" title="Jalankan satu siklus polling manual">▶ Jalankan Sekarang</button>
+          </div>
+          <div id="insightList" class="insight-list">
+            <p class="empty">Belum ada insight — menunggu data ...</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Kolom kanan: kesimpulan + riwayat -->
+      <div class="col">
+        <section class="panel conclusion-panel">
+          <div class="panel-head">
+            <h2>Kesimpulan Otomatis</h2>
+            <span class="badge" id="conclusionMeta">—</span>
+          </div>
+          <div id="conclusionBox" class="conclusion-box">
+            <p class="empty">Kesimpulan akan muncul saat ada perubahan signifikan.</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Riwayat Kesimpulan</h2>
+            <button class="btn ghost" id="refreshReportsBtn">↻ Muat Riwayat</button>
+          </div>
+          <div class="table-wrap">
+            <table class="reports">
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Provider</th>
+                  <th>Pemicu</th>
+                  <th>Kesimpulan</th>
+                </tr>
+              </thead>
+              <tbody id="reportTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Data eksternal: <span id="sourceLabel">-</span> &nbsp;•&nbsp; Refresh tiap
+    <span id="intervalLabel">-</span> &nbsp;•&nbsp;
+    Kesimpulan LLM digenerate ulang hanya ketika ada perubahan &ge; threshold.
+  </footer>
+
+  <script src="/static/app.js?v=3"></script>
+</body>
+</html>
